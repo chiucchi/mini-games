@@ -7,13 +7,14 @@ void main() => runApp(MaterialApp(
     ));
 
 class Home extends StatefulWidget {
-  Controller
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController username_controller = new TextEditingController();
+  TextEditingController userpsw_controller = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +57,14 @@ class _HomeState extends State<Home> {
                             labelText: "USUÁRIO",
                             labelStyle: TextStyle(fontSize: 20.0),
                           ),
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return ('Favor inserir o usuário');
+                            } else if (value.length < 3) {
+                              return ("Favor inserir um nome de usuário maior");
+                            }
+                            return null;
+                          },
                         ),
                         TextFormField(
                           controller: userpsw_controller,
@@ -64,6 +73,14 @@ class _HomeState extends State<Home> {
                             labelText: "SENHA",
                             labelStyle: TextStyle(fontSize: 20.0),
                           ),
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return ('Favor inserir a senha');
+                            } else if (value.length < 5) {
+                              return ("Favor inserir uma senha maior");
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -556,6 +573,16 @@ List<String> palavras = [
   'IOS',
   'TECLADO',
   'MONITOR',
+  'CACHORRO',
+  'CANTAR',
+  'CASA',
+  'COZINHA',
+  'PREDIO',
+  'PUC',
+  'FACULDADE',
+  'PROFESSOR',
+  'CHUVA',
+  'RUA'
 ];
 
 List<String> letras = [
